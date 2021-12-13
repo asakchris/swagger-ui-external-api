@@ -1,6 +1,6 @@
 package com.test;
 
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -16,16 +16,16 @@ public class SwaggerUiTest extends AbstractSpringDocTest {
     MvcResult mvcResult =
         mockMvc.perform(get("/swagger-ui/index.html")).andExpect(status().isOk()).andReturn();
     String contentAsString = mvcResult.getResponse().getContentAsString();
-    //log.info("contentAsString: {}", contentAsString);
+    // log.info("contentAsString: {}", contentAsString);
     assertTrue(contentAsString.contains("Swagger UI"));
   }
 
   @Test
-  public void shouldNotHaveDefaultContent() throws Exception {
+  public void shouldHaveDefaultContent() throws Exception {
     MvcResult mvcResult =
         mockMvc.perform(get("/swagger-ui/index.html")).andExpect(status().isOk()).andReturn();
     String transformedIndex = mvcResult.getResponse().getContentAsString();
     assertTrue(transformedIndex.contains("Swagger UI"));
-    assertNotEquals(this.getExpectedResult("explore"), transformedIndex);
+    assertEquals(this.getExpectedResult("explore"), transformedIndex);
   }
 }

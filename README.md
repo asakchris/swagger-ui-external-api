@@ -1,0 +1,3 @@
+# Swagger UI - Aggregate external endpoints inside one single application
+Followed instructions in [this guide](https://springdoc.org/faq.html#how-can-i-agreagte-external-endpoints-exposing-openapi-3-spec-inside-one-single-application) to create a single application with all endpoints exposed.
+Start the application and access Swagger UI using [this](http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config) link.
